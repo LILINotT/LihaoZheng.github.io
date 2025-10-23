@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郑力浩 - PMO</title>
+    <link rel="icon" type="image/svg+xml" href="favicon-pmo.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <span id="user-name">你的名字</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">关于我</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link">技能</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projects" class="nav-link">项目</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">联系我</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 首页部分 -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        你好，我是 <span id="hero-name">你的名字</span>
+                    </h1>
+                    <p class="hero-subtitle" id="hero-subtitle">你的职业/身份</p>
+                    <p class="hero-description" id="hero-description">在这里写一段简短的自我介绍...</p>
+                    <div class="hero-buttons">
+                        <a href="#about" class="btn btn-primary">了解更多</a>
+                        <a href="#contact" class="btn btn-secondary">联系我</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="profile.jpg" alt="郑力浩的照片" class="profile-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder" style="display: none;">
+                        <i class="fas fa-user"></i>
+                        <p>你的照片</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我部分 -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">关于我</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p id="about-description">在这里写一段关于你的详细介绍...</p>
+                        <div class="about-info">
+                            <div class="info-item">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>年龄：<span id="age">25</span>岁</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>位置：<span id="location">你的城市</span></span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>教育：<span id="education">你的学历</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能部分 -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">技能专长</h2>
+                <div class="skills-grid" id="skills-container">
+                    <!-- 技能将通过JavaScript动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目部分 -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">我的项目</h2>
+                <div class="projects-grid" id="projects-container">
+                    <!-- 项目将通过JavaScript动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我部分 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">联系我</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span id="email">your.email@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span id="phone">+86 123-4567-8900</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="#" id="github-link">GitHub</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="#" id="linkedin-link">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contact-form">
+                            <!-- 直接发送到Gmail，无需Formspree -->
+                            
+                            <div class="form-group">
+                                <input type="text" name="name" id="form-name" placeholder="你的名字" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" id="form-email" placeholder="你的邮箱" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" id="form-message" placeholder="你的消息" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">发送消息</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 <span id="footer-name">你的名字</span>. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
