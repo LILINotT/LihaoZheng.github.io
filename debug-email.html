@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮件功能调试</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .debug-info { background: #f0f0f0; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .test-form { background: white; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        input, textarea { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>邮件功能调试页面</h1>
+    
+    <div class="debug-info">
+        <h3>调试信息：</h3>
+        <p>这个页面用于测试邮件发送功能，确保不再使用Formspree。</p>
+        <p>如果测试成功，应该会打开邮件客户端，而不是发送到Formspree。</p>
+    </div>
+    
+    <div class="test-form">
+        <h3>测试表单：</h3>
+        <form id="debug-form">
+            <input type="text" name="name" placeholder="测试姓名" required>
+            <input type="email" name="email" placeholder="测试邮箱" required>
+            <textarea name="message" placeholder="测试消息" rows="3" required></textarea>
+            <button type="submit">测试发送</button>
+        </form>
+    </div>
+    
+    <div id="debug-output"></div>
+
+    <script>
+        document.getElementById('debug-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+            
+            console.log('表单数据:', formObject);
+            
+            // 调用邮件发送函数
+            sendToGmailDirectly(formObject);
+        });
+        
+        function sendToGmailDirectly(formData) {
+            const { name, email, message } = formData;
+            
+            console.log('开始发送邮件到Gmail...');
+            
+            // 创建邮件内容
+            const subject = `来自个人网站的新消息 - ${name}`;
+            const body = `您收到一条来自个人网站的新消息：
+
+发件人：${name}
+邮箱：${email}
+
+消息内容：
+${message}
+
+---
+此邮件由个人网站自动生成
+时间：${new Date().toLocaleString('zh-CN')}`;
+            
+            // 创建mailto链接
+            const mailtoLink = `mailto:lihao.zheng.kg@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            console.log('邮件链接:', mailtoLink);
+            
+            // 显示调试信息
+            document.getElementById('debug-output').innerHTML = `
+                <div class="debug-info">
+                    <h4>调试输出：</h4>
+                    <p><strong>收件人：</strong>lihao.zheng.kg@gmail.com</p>
+                    <p><strong>主题：</strong>${subject}</p>
+                    <p><strong>内容：</strong>${body.replace(/\n/g, '<br>')}</p>
+                    <p><strong>状态：</strong>正在打开邮件客户端...</p>
+                </div>
+            `;
+            
+            // 打开邮件客户端
+            setTimeout(() => {
+                window.open(mailtoLink);
+                console.log('邮件客户端已打开');
+            }, 500);
+        }
+    </script>
+</body>
+</html>
